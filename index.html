@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somdatta Paul</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            color: #333;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        h1 {
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #6a1b9a; /* Color for profession */
+            transition: transform 0.3s, color 0.3s;
+        }
+        h2:hover {
+            transform: scale(1.05);
+            color: #ab47bc; /* Lighter color on hover */
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .image-container img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .box {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* Enable child pseudo-element */
+            overflow: hidden; /* Prevent overflow from child */
+        }
+        .box:hover {
+            background-color: #e7f3fe;
+            transform: scale(1.05);
+        }
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6f61, #6a1b9a);
+            opacity: 0.3;
+            transition: opacity 0.3s;
+            z-index: 0; /* Ensure it is behind the text */
+        }
+        .box:hover::before {
+            opacity: 0.6; /* Make it more visible on hover */
+        }
+        .box h3 {
+            position: relative; /* Position relative for text on top of the gradient */
+            z-index: 1; /* Ensure it is above the gradient */
+        }
+        .details {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+        .details.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+    <script>
+        function showDetails(parameter) {
+            const detailBox = document.getElementById('detailBox');
+            detailBox.classList.remove('show'); // Hide the detail box first
+            setTimeout(() => {
+                detailBox.style.display = 'block'; // Show the box after hiding
+                detailBox.classList.add('show'); // Add show class for fade-in effect
+                switch (parameter) {
+                    case 'about':
+                        detailBox.innerHTML = "<h3>About Me:</h3><p>Name: SOMDATTA PAUL<br>Sec: G, Roll: 71, Enrollment no: 12024002001365, Mail : somdatta.paul2024@uem.edu.in</p>";
+                        break;
+                    case 'education':
+                        detailBox.innerHTML = "<h3>Educational Background:</h3><p>I am pursuing B.Tech in Computer Science and Engineering</p>";
+                        break;
+                    case 'experience':
+                        detailBox.innerHTML = "<h3>Experience:</h3><p>Details not Available</p>";
+                        break;
+                    case 'publications':
+                        detailBox.innerHTML = "<h3>Paper/Patent Publications:</h3><p>Details not Available</p>";
+                        break;
+                    case 'awards':
+                        detailBox.innerHTML = "<h3>Awards and Achievements:</h3><p>Details not Available</p>";
+                        break;
+                    case 'projects':
+                        detailBox.innerHTML = "<h3>Projects:</h3><p>Create Website</p>";
+                        break;
+                    case 'membership':
+                        detailBox.innerHTML = "<h3>Membership:</h3><p>Details not Available</p>";
+                        break;
+                    case 'research':
+                        detailBox.innerHTML = "<h3>Research Thrust Area:</h3><p>Details not Available</p>";
+                        break;
+                    case 'events':
+                        detailBox.innerHTML = "<h3>List of Events:</h3><p>Details not Available</p>";
+                        break;
+                    case 'poster':
+                        detailBox.innerHTML = "<h3>Poster/Paper Presentation:</h3><p>Physics Poster Presentation: ASTRONOMY OF ANCIENT CIVILIZATIONS<br>Created Flyer Poster Topic on 'Importance of Artificial Intelligence in Medical Science'</p>";
+                        break;
+                    case 'courses':
+                        detailBox.innerHTML = "<h3>Courses Completed:</h3><p>NPTEL Course Name: Developing Soft Skills and Personality</p>";
+                        break;
+                    case 'contact':
+                        detailBox.innerHTML = "<h3>Contact Address:</h3><p>13/Mahadeb Banerjee Lane, Kadamtala, Howrah</p>";
+                        break;
+                    default:
+                        detailBox.innerHTML = "<p>No details available.</p>";
+                }
+            }, 300); // Wait for the fade-out before showing the box
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>SOMDATTA PAUL</h1>
+        <h2>University Of Engineering and Management, Kolkata</h2>
+        <div class="image-container">
+            <img src="somdatta.jpeg" alt="Owner Image">
+        </div>
+        <div class="grid">
+            <div class="box" onclick="showDetails('about')"><h3>About Me</h3></div>
+            <div class="box" onclick="showDetails('education')"><h3>Educational Background</h3></div>
+            <div class="box" onclick="showDetails('experience')"><h3>Experience</h3></div>
+            <div class="box" onclick="showDetails('publications')"><h3>Paper/Patent Publications</h3></div>
+            <div class="box" onclick="showDetails('awards')"><h3>Awards and Achievements</h3></div>
+            <div class="box" onclick="showDetails('projects')"><h3>Projects</h3></div>
+            <div class="box" onclick="showDetails('membership')"><h3>Membership</h3></div>
+            <div class="box" onclick="showDetails('research')"><h3>Research Thrust Area</h3></div>
+            <div class="box" onclick="showDetails('events')"><h3>List of Events</h3></div>
+            <div class="box" onclick="showDetails('poster')"><h3>Poster/Paper Presentation</h3></div>
+            <div class="box" onclick="showDetails('courses')"><h3>Courses Completed</h3></div>
+            <div class="box" onclick="showDetails('contact')"><h3>Contact Address</h3></div>
+        </div>
+        <div id="detailBox" class="details"></div>
+    </div>
+</body>
+</html>
